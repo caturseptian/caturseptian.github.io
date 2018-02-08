@@ -51,9 +51,6 @@
             <a href="#about" onclick=$("#menu-close").click();>About</a>
         </li>
         <li>
-            <a href="#portfolio" onclick=$("#menu-close").click();>Portfolio</a>
-        </li>
-        <li>
             <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
         </li>
     </ul>
@@ -158,33 +155,6 @@
     <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
 </footer>
 
-<div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="modal-body">
-                        <h2 id="project-title"></h2>
-                        <hr class="star-primary">
-                        <img id="project-image" src="img/bg.jpg" class="img-responsive img-centered center-block"
-                             alt="image">
-                        <p id="project-description" class="text-justify"></p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="hidden"><iframe src="https://www.youtube.com/embed/oJrsCNh5sIk?autoplay=1&amp;loop=1&amp;playlist=oJrsCNh5sIk" class="hidden"></iframe></div>
 
 <!-- jQuery -->
@@ -195,16 +165,6 @@
 
 <!-- Custom Theme JavaScript -->
 <script>
-    $('#portfolioModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var title = button.data('title');
-        var image = button.data('image');
-        var description = button.data('description');
-        var modal = $(this);
-        modal.find('#project-title').text(title);
-        modal.find('#project-image').attr('src', 'img/' + image);
-        modal.find('#project-description').text(description);
-    });
     // Closes the sidebar menu
     $("#menu-close").click(function (e) {
         e.preventDefault();
