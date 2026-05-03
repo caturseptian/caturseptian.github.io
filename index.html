@@ -1,248 +1,1370 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Catur Septian Web Portfolio">
-    <meta name="author" content="ccseptian@gmail.com">
-    <title>Catur Septian</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/galaxy.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/image.css" rel="stylesheet">
-    <link href="css/portfolio.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- add some styles -->
-    <style>
-        p a:hover {
-            color: ghostwhite;
-            background-color: darkgray;
-            padding: 0 6px;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Catur Septian — Full Stack Developer building scalable web applications, APIs, and data-driven systems.">
+  <meta property="og:title" content="Catur Septian — Full Stack Developer">
+  <meta property="og:description"
+    content="Full Stack Developer building scalable web applications, APIs, and data-driven systems.">
+  <meta property="og:type" content="website">
+  <meta name="author" content="Catur Septian">
+  <title>Catur Septian — Full Stack Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Prevent flash of wrong theme -->
+  <script>(function () { var t = localStorage.getItem('theme') || 'dark'; document.documentElement.classList.toggle('dark', t === 'dark'); })()</script>
+
+  <style>
+    :root {
+      --accent: #0d9488;
+      --accent-hover: #0f766e;
+      --accent-light: #ccfbf1;
+      --accent-dim: rgba(13, 148, 136, .12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --grid-dot: rgba(0, 0, 0, 0.06);
+    }
+
+    html.dark {
+      --accent-light: #042f2e;
+      --accent-dim: rgba(13, 148, 136, .10);
+      --nav-bg: rgba(10, 15, 28, 0.92);
+      --grid-dot: rgba(255, 255, 255, 0.04);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Subtle grid bg on hero */
+    .grid-bg {
+      background-image:
+        linear-gradient(var(--grid-dot) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-dot) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Accent glow orbs */
+    .orb-1 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13, 148, 136, .15) 0%, transparent 65%);
+      filter: blur(60px);
+      pointer-events: none;
+      top: -80px;
+      right: -100px;
+    }
+
+    .orb-2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, .08) 0%, transparent 65%);
+      filter: blur(50px);
+      pointer-events: none;
+      bottom: 0;
+      left: -60px;
+    }
+
+    /* Code block decorative */
+    .code-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    /* Typography */
+    .accent {
+      color: var(--accent);
+    }
+
+    .accent-bg {
+      background-color: var(--accent);
+    }
+
+    /* Nav */
+    #navbar {
+      transition: background-color .3s, box-shadow .3s;
+    }
+
+    .nav-scrolled {
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    html:not(.dark) .nav-scrolled {
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    html.dark .nav-scrolled {
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color .2s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      transition: width .2s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--accent) !important;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    .delay-1 {
+      transition-delay: .06s;
+    }
+
+    .delay-2 {
+      transition-delay: .12s;
+    }
+
+    .delay-3 {
+      transition-delay: .18s;
+    }
+
+    .delay-4 {
+      transition-delay: .24s;
+    }
+
+    /* Cards */
+    .project-card {
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent) !important;
+    }
+
+    html:not(.dark) .project-card:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .09);
+    }
+
+    html.dark .project-card:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .4);
+    }
+
+    .cert-card {
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent) !important;
+    }
+
+    /* Timeline */
+    .tl {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    .tl:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 15px;
+      width: 1px;
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: .4;
+    }
+
+    /* Stack badges */
+    .sbadge {
+      transition: transform .15s ease;
+      cursor: default;
+    }
+
+    .sbadge:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Section label */
+    .slabel {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+
+    /* Alternating sections */
+    .alt {
+      background-color: #f8fafc;
+    }
+
+    html.dark .alt {
+      background-color: #080e1a;
+    }
+
+    /* Contact pill */
+    .cpill {
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+
+    .cpill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Back to top */
+    #btt {
+      transition: opacity .3s;
+    }
+
+    #btt.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Mobile menu */
+    #mmenu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .3s ease, opacity .25s ease;
+    }
+
+    #mmenu.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Hero badge */
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem .9rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(13, 148, 136, .35);
+      background: var(--accent-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    html.dark .role-badge {
+      border-color: rgba(13, 148, 136, .3);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(13, 148, 136, .35);
+      border-radius: 3px;
+    }
+
+    /* Primary badge in projects */
+    .tag-fs {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    html.dark .tag-fs {
+      background: #082f49;
+      color: #38bdf8;
+    }
+
+    .tag-data {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    html.dark .tag-data {
+      background: #052e16;
+      color: #4ade80;
+    }
+
+    .tag-neutral {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    html.dark .tag-neutral {
+      background: #1e293b;
+      color: #94a3b8;
+    }
+  </style>
 </head>
-<body oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;'>
-<!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-<nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand">
-            <a href="#top" onclick=$("#menu-close").click();>Catur Septian</a>
-        </li>
-        <li>
-            <a href="#top" onclick=$("#menu-close").click();>Home</a>
-        </li>
-        <li>
-            <a href="#about" onclick=$("#menu-close").click();>About</a>
-        </li>
-        <li>
-            <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
-        </li>
-    </ul>
-</nav>
 
-<!-- Header -->
-<header id="top" class="header spaces">
-    <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="text-vertical-center animated slideInUp">
-        <h1 class="animated pulse infinite"><strong>Hey, I'm Tian</strong></h1>
-        <br>
-        <a href="#about" class="btn btn-dark btn-lg btn-circle animated pulse infinite"><i
-                class="fa fa-2x fa-angle-down"></i></a>
+<body class="bg-white dark:bg-[#0a0f1c] text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased"
+  style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+
+  <!-- ░░ NAV ░░ -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <nav id="navbar" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+      <a href="#hero" class="font-mono text-sm font-medium tracking-tight hover:text-teal-500 transition-colors">
+        <span style="color:var(--accent)" class="opacity-60">$</span> caturseptian<span
+          style="color:var(--accent)">.</span>dev
+      </a>
+
+      <ul class="hidden md:flex items-center gap-7">
+        <li><a href="#about"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">About</a>
+        </li>
+        <li><a href="#projects"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Projects</a>
+        </li>
+        <li><a href="#stack"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Stack</a>
+        </li>
+        <li><a href="#experience"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Experience</a>
+        </li>
+        <li><a href="#certifications"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Certs</a>
+        </li>
+        <li><a href="#contact"
+            class="nav-link text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">Contact</a>
+        </li>
+      </ul>
+
+      <div class="flex items-center gap-1">
+        <button id="theme-btn" aria-label="Toggle theme"
+          class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/8 transition-all">
+          <svg id="sun-ic" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-ic" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <button id="mob-btn" aria-label="Menu" aria-expanded="false"
+          class="md:hidden p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/8 transition-all">
+          <svg id="mob-open" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="mob-close" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mmenu"
+      class="md:hidden bg-white/96 dark:bg-[#0a0f1c]/96 backdrop-blur-xl border-b border-slate-200 dark:border-white/6">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-0.5">
+        <a href="#about"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all"
+          style="--tw-text-opacity:1">About</a>
+        <a href="#projects"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">Projects</a>
+        <a href="#stack"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">Stack</a>
+        <a href="#experience"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">Experience</a>
+        <a href="#certifications"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">Certifications</a>
+        <a href="#contact"
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">Contact</a>
+      </div>
     </div>
-</header>
+  </header>
 
-<!-- About -->
-<section id="about" class="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>About me?</h2>
-                <hr/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 text-center">
-                <br>
-                <img src="https://avatars1.githubusercontent.com/u/13551379?s=460&v=4" alt="me" class="img-circle img-responsive center-block">
-                <h6 class="lead">Catur Septian</h6>
-            </div>
-            <div class="col-sm-6 text-justify">
-                <p class="lead">Hello! I'm Tian, a web developer based in Yogyakarta, Indonesia.</p>
-<!--                 <p class="lead">
-                    Currently, I am a web programmer.
-                </p> -->
-                <p class="lead">
-                    Previously, I was the lab assistant in programming courses and student staff of AMIKOM University.
-                    I also work with clients on all kinds of web projects.
-                </p>
-                <p class="lead">
-                    Aside from programming, I’m obsessed with music and football.
-                </p>
-                <p class="lead">
-                    Thank you for visiting! <i class="fa fa-smile-o"></i>
-                </p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</section>
+  <main>
+    <!-- ░░ HERO ░░ -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden grid-bg">
+      <div class="orb-1"></div>
+      <div class="orb-2"></div>
 
-<!-- Quote -->
-<aside class="quote spaces">
-    <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="text-vertical-center text-quote animated pulse infinite">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    " Be passionate about the things that beneficial to you. Ask God for help, do not be weak. "
+      <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          <!-- Left: copy -->
+          <div>
+            <div class="role-badge mb-6">
+              <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:var(--accent)"></span>
+              Full Stack Developer
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">
+              Hi, I'm<br>
+              <span style="color:var(--accent)">Catur</span> Septian
+            </h1>
+
+            <p
+              class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-lg font-light">
+              Full Stack Developer building scalable web applications, APIs, and data-driven systems.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="#projects"
+                class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                style="background:var(--accent)" onmouseover="this.style.background='var(--accent-hover)'"
+                onmouseout="this.style.background='var(--accent)'">
+                View Projects
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a href="https://github.com/caturseptian" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 border border-slate-300 dark:border-white/12 text-slate-700 dark:text-slate-300 hover:border-teal-500 dark:hover:border-teal-500 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:-translate-y-0.5">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
+              </a>
+              <a href="#contact"
+                class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:underline underline-offset-4">
+                Contact
+              </a>
+            </div>
+
+            <div class="mt-16 flex items-center gap-3 font-mono text-xs text-slate-400 dark:text-slate-600">
+              <span class="flex gap-1"><span class="w-4 h-0.5 bg-current rounded"></span><span
+                  class="w-2.5 h-0.5 bg-current rounded"></span></span>
+              scroll to explore
+            </div>
+          </div>
+
+          <!-- Right: code block decoration -->
+          <div class="hidden lg:block">
+            <div
+              class="rounded-2xl border border-slate-200 dark:border-white/8 bg-slate-50 dark:bg-white/4 overflow-hidden shadow-xl">
+              <!-- Toolbar -->
+              <div
+                class="flex items-center gap-1.5 px-4 py-3 border-b border-slate-200 dark:border-white/6 bg-white dark:bg-white/3">
+                <span class="w-3 h-3 rounded-full bg-red-400 opacity-80"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-400 opacity-80"></span>
+                <span class="w-3 h-3 rounded-full bg-green-400 opacity-80"></span>
+                <span class="ml-3 font-mono text-xs text-slate-400 dark:text-slate-500">profile.ts</span>
+              </div>
+              <!-- Code -->
+              <div class="code-block p-5 text-slate-700 dark:text-slate-300">
+                <div><span class="text-purple-500 dark:text-purple-400">const</span> <span
+                    class="text-teal-600 dark:text-teal-400">developer</span> = {</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">name</span>: <span
+                    class="text-amber-600 dark:text-amber-400">"Catur Septian"</span>,</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">role</span>: <span
+                    class="text-amber-600 dark:text-amber-400">"Full Stack Developer"</span>,</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">location</span>: <span
+                    class="text-amber-600 dark:text-amber-400">"Yogyakarta, ID"</span>,</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">stack</span>: [</div>
+                <div class="pl-10"><span class="text-amber-600 dark:text-amber-400">"HTML"</span>, <span
+                    class="text-amber-600 dark:text-amber-400">"CSS"</span>, <span class="text-amber-600 dark:text-amber-400">"JavaScript"</span>,</div>
+                <div class="pl-10"><span class="text-amber-600 dark:text-amber-400">"PHP"</span>, <span
+                    class="text-amber-600 dark:text-amber-400">"CodeIgniter"</span>, <span class="text-amber-600 dark:text-amber-400">"Laravel"</span>,</div>
+                <div class="pl-10"><span class="text-amber-600 dark:text-amber-400">"Node.js"</span>, <span
+                    class="text-amber-600 dark:text-amber-400">"Golang"</span>, <span class="text-amber-600 dark:text-amber-400">"Python"</span>,</div>
+                <div class="pl-5">],</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">focus</span>: <span
+                    class="text-amber-600 dark:text-amber-400">"Full Stack Web Development"</span>,</div>
+                <div class="pl-5"><span class="text-blue-600 dark:text-blue-400">available</span>: <span
+                    class="text-green-500">true</span>,</div>
+                <div>}</div>
+                <div class="mt-3 text-slate-400 dark:text-slate-500">//&nbsp;Open to new opportunities</div>
+                <div class="mt-1 flex items-center gap-1"><span
+                    class="text-teal-600 dark:text-teal-400 font-medium">developer</span><span
+                    class="text-slate-500">.</span><span class="text-blue-600 dark:text-blue-400">build</span><span
+                    class="text-slate-500">()</span><span class="animate-pulse ml-0.5"
+                    style="color:var(--accent)">▊</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ ABOUT ░░ -->
+    <section id="about" class="alt py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slabel">01 — About</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-14 reveal">Who I Am</h2>
+
+        <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
+          <div class="md:col-span-2 space-y-5">
+            <div class="flex items-center gap-4 mb-8 reveal delay-1">
+              <img src="https://avatars.githubusercontent.com/u/13551379?s=96&v=4" alt="Catur Septian" width="68"
+                height="68" loading="lazy" class="rounded-2xl border-2 border-slate-200 dark:border-white/10 shrink-0">
+              <div>
+                <h3 class="font-bold text-xl">Catur Septian</h3>
+                <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-0.5">@caturseptian · Yogyakarta,
+                  Indonesia</p>
+              </div>
+            </div>
+
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed reveal delay-1">
+              I'm a Full Stack Developer building production-grade web applications, REST APIs, and internal systems.
+              I start with the fundamentals — <strong class="font-semibold text-slate-900 dark:text-white">HTML, CSS,
+                JavaScript, PHP</strong> — then move into <strong class="font-semibold text-slate-900 dark:text-white">CodeIgniter &amp; Laravel</strong> for robust backend frameworks.
+              I also work with <strong class="font-semibold text-slate-900 dark:text-white">Node.js</strong> and <strong
+                class="font-semibold text-slate-900 dark:text-white">Golang</strong> for systems that handle real load,
+              stay maintainable, and ship reliably via Docker-based workflows.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed reveal delay-2">
+              My web development roots go back to freelance PHP work across SMBs, where I learned how applications
+              actually break in production and how to keep them from doing so. That pragmatism shapes how I design
+              backend services today: explicit contracts, minimal dependencies, and clear separation between concerns.
+            </p>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed reveal delay-3">
+              More recently I've expanded into <strong class="font-semibold text-slate-900 dark:text-white">data
+                engineering</strong> — writing Python ETL pipelines, building Tableau integrations via the Hyper API,
+              and automating reporting workflows that used to require manual effort. This gives me a useful full-picture
+              perspective: I can build the system that generates the data <em>and</em> the pipeline that makes it
+              useful.
+            </p>
+          </div>
+
+          <aside class="reveal delay-2">
+            <div
+              class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-6 space-y-5 sticky top-24">
+              <div>
+                <p class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Primary
+                  Role</p>
+                <p class="font-semibold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full shrink-0" style="background:var(--accent)"></span>
+                  Full Stack Developer
+                </p>
+              </div>
+              <div class="w-full h-px bg-slate-100 dark:bg-white/10"></div>
+              <div>
+                <p class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2.5">
+                  Strengths</p>
+                <div class="space-y-1.5 text-sm text-slate-700 dark:text-slate-200">
+                  <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full shrink-0"
+                      style="background:var(--accent)"></span>Web Application Development</p>
+                  <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full shrink-0"
+                      style="background:var(--accent)"></span>Backend APIs &amp; Systems</p>
+                  <p class="flex items-center gap-2 opacity-75"><span
+                      class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>Data Pipelines &amp; ETL</p>
+                  <p class="flex items-center gap-2 opacity-75"><span
+                      class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>Dashboard Automation</p>
                 </div>
+              </div>
+              <div class="w-full h-px bg-slate-100 dark:bg-white/10"></div>
+              <div>
+                <p class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Status</p>
+                <span
+                  class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-900 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Open to opportunities
+                </span>
+              </div>
             </div>
+          </aside>
         </div>
-    </div>
-</aside>
+      </div>
+    </section>
 
-<!-- Contact -->
-<section id="contact" class="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
-                <hr class="primary">
-                <p class="lead">Contact me or email me and I will get back to you as soon as possible!</p>
-            </div>
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                <p class="lead"><a href="mailto:ccseptian@gmail.com" style="text-decoration: none;" class="text-muted">ccseptian@gmail.com</a>
-                </p>
-            </div>
+    <!-- ░░ PROJECTS ░░ -->
+    <section id="projects" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slabel">02 — Projects</div>
+        <div class="flex items-end justify-between mb-14">
+          <h2 class="text-3xl md:text-4xl font-extrabold reveal">Selected Work</h2>
+          <div class="hidden sm:flex items-center gap-3 text-xs font-mono text-slate-400">
+            <span class="inline-flex items-center gap-1.5"><span
+                class="w-2 h-2 rounded-sm tag-fs inline-block"></span>Full Stack</span>
+            <span class="inline-flex items-center gap-1.5"><span
+                class="w-2 h-2 rounded-sm tag-data inline-block"></span>Data / Automation</span>
+          </div>
         </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- TripMate AI -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-1">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style="background:var(--accent-dim)">
+                  <svg class="w-4.5 h-4.5" style="color:var(--accent)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8 7h12M8 11h12M8 15h12M4 7a1 1 0 11-2 0 1 1 0 012 0zM4 11a1 1 0 11-2 0 1 1 0 012 0zM4 15a1 1 0 11-2 0 1 1 0 012 0z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-fs">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/ai-travel-chatbot-tripmate-ai" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">TripMate AI — Smart Travel Chatbot</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">AI-powered travel assistant that helps Indonesian travelers plan trips easily and cheaply. Provides destination recommendations, custom itineraries, budget estimation, cuisine suggestions, and practical travel tips using Google Gemini 2.5 Flash.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Node.js</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Express</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Google Gemini API</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">JavaScript</span>
+            </div>
+          </article>
+
+          <!-- Konsultan Kegalauan -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-2">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style="background:var(--accent-dim)">
+                  <svg class="w-4.5 h-4.5" style="color:var(--accent)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-fs">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/konsultan-kegalauan" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Konsultan Kegalauan — AI Advisor</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">AI-powered chatbot using Gemini 2.5 Flash for maritime consulting. Features multi-turn conversations, structural analysis, document/image/audio uploads, and AI-generated insights. Built with Express backend.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Node.js</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Express</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Google Gemini API</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">File Upload</span>
+            </div>
+          </article>
+
+          <!-- HydroSim -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-3">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-950/60 flex items-center justify-center shrink-0">
+                  <svg class="w-4.5 h-4.5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-data">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/hydrosim" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">HydroSim — Flood Simulation Platform</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Web-based flood simulation workbench for 1D/2D hydrodynamic modeling with GIS support. Wraps EPA SWMM 5 and LISFLOOD-FP solvers. Load GIS data, define scenarios, run simulations, and visualize flood extent and depth.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Web-based</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">GIS</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Simulation</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Data Visualization</span>
+            </div>
+          </article>
+
+          <!-- Laravel PDF Editor -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style="background:var(--accent-dim)">
+                  <svg class="w-4.5 h-4.5" style="color:var(--accent)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-fs">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/laravel-pdf-editor" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Laravel PDF Editor — QR &amp; PNG Stamping</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Interactive single-page PDF editor. Upload PDFs with preview and pagination, generate QR codes or custom PNG stamps, drag/resize stamps, export final multi-page PDF. Built with Laravel 5.6 and PDF.js.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Laravel</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">PHP</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">PDF.js</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Interact.js</span>
+            </div>
+          </article>
+
+          <!-- Laravel 2FA App -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-5">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style="background:var(--accent-dim)">
+                  <svg class="w-4.5 h-4.5" style="color:var(--accent)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-fs">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/laravel-2fa-app" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Laravel 2FA App — Two-Factor Auth</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Simple and modern Two-Factor Authentication implementation for Laravel 12. Built completely from scratch with no external packages or dependencies. Production-ready security pattern.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Laravel</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">PHP</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Security</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Authentication</span>
+            </div>
+          </article>
+
+          <!-- Laravel Atur Dana -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-6">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                  style="background:var(--accent-dim)">
+                  <svg class="w-4.5 h-4.5" style="color:var(--accent)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-fs">Full Stack</span>
+              </div>
+              <a href="https://github.com/caturseptian/laravel-atur-dana" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Laravel Atur Dana — Finance Management</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Multi-user expense and finance management system built with Laravel 8. Track spending, manage budgets, and collaborate with multiple users. Features role-based access and financial reporting.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Laravel</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">PHP</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">MySQL</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Blade</span>
+            </div>
+          </article>
+
+          <!-- Tweet Deleter -->
+          <article
+            class="project-card bg-slate-50 dark:bg-white/[.03] border border-slate-200 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-4 reveal delay-1">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center shrink-0">
+                  <svg class="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.75" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M14.74 9l-.356 9m-4.368 0l-.356-9m1.172 9h2.368m-12.36-4.3c.015.34 1.682 3.313 5.371 3.313 3.956 0 5.369-3.02 5.379-3.32m.007-.992l-5.386-9.99L4.753 7.7m15.372 0l-5.379-9.991L4.007 7.7" />
+                  </svg>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full font-medium tag-data">Automation</span>
+              </div>
+              <a href="https://github.com/caturseptian/tweet-deleter" target="_blank" rel="noopener"
+                class="text-slate-400 hover:text-teal-500 transition-colors shrink-0 mt-1" aria-label="GitHub">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">Tweet Deleter — Chrome Extension</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Chrome browser extension to bulk delete all tweets, likes, and retweets from your Twitter account. Automates the tedious process of cleaning up your Twitter history. Simple, effective automation.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">JavaScript</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Chrome Extension</span>
+              <span class="font-mono text-xs tag-neutral px-2 py-0.5 rounded-md">Twitter API</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ STACK ░░ -->
+    <section id="stack" class="alt py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slabel">03 — Stack</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-14 reveal">Tech Stack</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
+
+          <div class="reveal delay-1">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded" style="background:var(--accent)"></span>Web Fundamentals
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">HTML</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">CSS</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">JavaScript</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">PHP</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-2">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-cyan-500"></span>PHP Frameworks
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">CodeIgniter</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Laravel</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-3">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-pink-500"></span>Languages &amp; Runtimes
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">React</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Node.js</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Golang</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Python</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-3">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-blue-500"></span>Databases &amp; Caching
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">MySQL</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">PostgreSQL</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">SQL Server</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">SQLite</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Redis</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-4">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-indigo-500"></span>DevOps &amp; Infrastructure
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Docker</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Minio</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Ansible</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-5">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded" style="background:var(--accent)"></span>Version Control
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">GitHub</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">GitLab</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Bitbucket</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-6">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-green-500"></span>Package Managers
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Composer</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Nix</span>
+            </div>
+          </div>
+
+          <div class="reveal delay-7">
+            <h3
+              class="font-mono text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span class="w-4 h-0.5 rounded bg-green-500"></span>Operating Systems
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Windows</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">macOS</span>
+              <span
+                class="sbadge font-mono text-xs px-3 py-1.5 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/8 font-medium shadow-sm">Ubuntu</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ EXPERIENCE ░░ -->
+    <section id="experience" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slabel">04 — Experience</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-14 reveal">Work History</h2>
+
+        <div class="max-w-2xl">
+
+          <div class="tl reveal delay-1">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <h3 class="font-bold text-lg">Freelance Web Programmer</h3>
+              <span
+                class="font-mono text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-white/6 px-2 py-0.5 rounded-md">2017
+                – Present</span>
+            </div>
+            <p class="text-sm font-semibold mb-3" style="color:var(--accent)">Self-employed</p>
+            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2"><span
+                  class="text-slate-300 dark:text-slate-600 mt-0.5 shrink-0">›</span>Designed and built custom web
+                applications for SMB clients using PHP, CodeIgniter, and Laravel</li>
+              <li class="flex items-start gap-2"><span
+                  class="text-slate-300 dark:text-slate-600 mt-0.5 shrink-0">›</span>Developed inventory management
+                systems, CMS platforms, and point-of-sale tools</li>
+              <li class="flex items-start gap-2"><span
+                  class="text-slate-300 dark:text-slate-600 mt-0.5 shrink-0">›</span>Maintained and extended legacy
+                codebases, reducing technical debt and improving performance</li>
+            </ul>
+          </div>
+
+          <div class="pl-8 mb-4">
+            <span class="font-mono text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Earlier
+              Roles</span>
+          </div>
+
+          <div class="tl reveal delay-2">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <h3 class="font-bold text-base">Practicum Assistant</h3>
+              <span
+                class="font-mono text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-white/6 px-2 py-0.5 rounded-md">2014
+                – 2016</span>
+            </div>
+            <p class="text-sm font-semibold mb-3" style="color:var(--accent)">STMIK Amikom Yogyakarta</p>
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Courses:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+              <span class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><span
+                  class="w-1.5 h-1.5 rounded-full shrink-0" style="background:var(--accent)"></span>Algorithm &amp;
+                Programming (2014/15) — Excellent</span>
+              <span class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><span
+                  class="w-1.5 h-1.5 rounded-full shrink-0" style="background:var(--accent)"></span>Data Structures
+                (2014/15) — Good</span>
+              <span class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><span
+                  class="w-1.5 h-1.5 rounded-full shrink-0" style="background:var(--accent)"></span>Algorithm &amp;
+                Programming (2015/16) — Good</span>
+              <span class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><span
+                  class="w-1.5 h-1.5 rounded-full shrink-0" style="background:var(--accent)"></span>Web Programming
+                (2015/16) — Good</span>
+            </div>
+          </div>
+
+          <div class="tl reveal delay-3">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <h3 class="font-bold text-base">Student Staff — Computer Technician</h3>
+              <span
+                class="font-mono text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-white/6 px-2 py-0.5 rounded-md">Aug
+                – Nov 2016</span>
+            </div>
+            <p class="text-sm font-semibold mb-3" style="color:var(--accent)">STMIK Amikom Yogyakarta</p>
+            <ul class="space-y-1.5 text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2"><span
+                  class="text-slate-300 dark:text-slate-600 mt-0.5 shrink-0">›</span>Provided hardware maintenance and
+                technical support for campus computer labs</li>
+              <li class="flex items-start gap-2"><span
+                  class="text-slate-300 dark:text-slate-600 mt-0.5 shrink-0">›</span>Configured network equipment and
+                assisted faculty with IT needs — Satisfactory</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ CERTIFICATIONS ░░ -->
+    <section id="certifications" class="alt py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slabel">05 — Certifications</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-14 reveal">Credentials</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <a href="https://www.datacamp.com/certificate/DE0015292128567" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-1">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">Data Engineer Certificate</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">DataCamp</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Feb 22, 2026</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+          <a href="https://www.credly.com/users/caturseptian" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-2">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 dark:bg-yellow-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">MongoDB Schema Design Patterns</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">MongoDB / Credly</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Apr 18, 2026</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+          <a href="https://www.credly.com/users/caturseptian" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">Docker Essentials: A Developer Introduction</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">IBM SkillsBuild / Credly</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Nov 27, 2025</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+          <a href="https://www.credly.com/users/caturseptian" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-cyan-600 dark:text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">Introduction to Kubernetes</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">Microsoft / Credly</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Nov 30, 2025</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+          <a href="https://www.credly.com/users/caturseptian" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-5">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">Web Development Fundamentals</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">IBM SkillsBuild / Credly</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Dec 2, 2025</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+          <a href="https://learn.microsoft.com/en-us/certifications/" target="_blank" rel="noopener"
+            class="cert-card bg-white dark:bg-white/5 border border-slate-200 dark:border-white/12 rounded-2xl p-5 flex flex-col gap-4 reveal delay-6">
+            <div class="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-950/60 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm leading-snug text-slate-900 dark:text-white">Database Fundamentals</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 mt-1.5">Microsoft Technology Associate</p>
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Jun 30, 2016</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-medium" style="color:var(--accent)">View credential
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg></span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ CONTACT ░░ -->
+    <section id="contact" class="py-24 md:py-32">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+        <div class="slabel">06 — Contact</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-5 reveal">Get In Touch</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-12 leading-relaxed reveal delay-1">
+          Available for full-stack development contracts, API design, and backend consulting. Also open to data
+          engineering and automation projects.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center reveal delay-2">
+          <a href="mailto:hello@caturseptian.site"
+            class="cpill inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl border-2 border-slate-200 dark:border-white/10 text-sm font-medium">
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            hello@caturseptian.site
+          </a>
+          <a href="https://github.com/caturseptian" target="_blank" rel="noopener"
+            class="cpill inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl border-2 border-slate-200 dark:border-white/10 text-sm font-medium">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            caturseptian
+          </a>
+          <a href="https://linkedin.com/in/caturseptian" target="_blank" rel="noopener"
+            class="cpill inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl border-2 border-slate-200 dark:border-white/10 text-sm font-medium">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            caturseptian
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-100 dark:border-white/5 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <p class="font-mono text-xs text-slate-400 dark:text-slate-500">&copy; 2026 Catur Septian</p>
+      <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"
+        class="opacity-0 pointer-events-none p-2 rounded-lg text-slate-400 hover:text-teal-500 hover:bg-slate-100 dark:hover:bg-white/6 transition-all">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
     </div>
-</section>
+  </footer>
 
-<!-- Footer -->
-<footer class="footer spaces">
-    <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="text-vertical-center text-muted">
-        <p>Copyright &copy; <b>Catur Septian</b> 2017</p>
-    </div>
-    <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
-</footer>
+  <script>
+    // ── Theme ─────────────────────────────────────────────────────────
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('theme-btn');
+    const sunIc = document.getElementById('sun-ic');
+    const moonIc = document.getElementById('moon-ic');
 
-<div class="hidden"><iframe src="https://www.youtube.com/embed/oJrsCNh5sIk?autoplay=1&amp;loop=1&amp;playlist=oJrsCNh5sIk" class="hidden"></iframe></div>
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function (e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    // Scrolls to the selected menu item on the page
-    $(function () {
-        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
-    //#to-top button appears after scrolling
-    var fixed = false;
-    $(document).scroll(function () {
-        if ($(this).scrollTop() > 250) {
-            if (!fixed) {
-                fixed = true;
-                // $('#to-top').css({position:'fixed', display:'block'});
-                $('#to-top').show("slow", function () {
-                    $('#to-top').css({
-                        position: 'fixed',
-                        display: 'block'
-                    });
-                });
-            }
-        } else {
-            if (fixed) {
-                fixed = false;
-                $('#to-top').hide("slow", function () {
-                    $('#to-top').css({
-                        display: 'none'
-                    });
-                });
-            }
-        }
-    });
-    // Disable Google Maps scrolling
-    // See http://stackoverflow.com/a/25904582/1607849
-    // Disable scroll zooming and bind back the click event
-    var onMapMouseleaveHandler = function (event) {
-        var that = $(this);
-        that.on('click', onMapClickHandler);
-        that.off('mouseleave', onMapMouseleaveHandler);
-        that.find('iframe').css("pointer-events", "none");
+    function applyTheme(t) {
+      html.classList.toggle('dark', t === 'dark');
+      sunIc.classList.toggle('hidden', t !== 'dark');
+      moonIc.classList.toggle('hidden', t === 'dark');
     }
-    var onMapClickHandler = function (event) {
-        var that = $(this);
-        // Disable the click handler until the user leaves the map area
-        that.off('click', onMapClickHandler);
-        // Enable scrolling zoom
-        that.find('iframe').css("pointer-events", "auto");
-        // Handle the mouse leave event
-        that.on('mouseleave', onMapMouseleaveHandler);
-    }
-    // Enable map zooming with mouse scroll when the user clicks the map
-    $('.map').on('click', onMapClickHandler);
-</script>
-<script>
-    $(function () {
-        $('#menu-toggle').hide();
-        $(window).scroll(function () {
-            if ($(this).scrollTop() < 250) {
-                $('#menu-toggle').hide("slow");
-            } else {
-                $('#menu-toggle').show("slow");
-            }
-        });
+    applyTheme(localStorage.getItem('theme') || 'dark');
+
+    themeBtn.addEventListener('click', () => {
+      const next = html.classList.contains('dark') ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
     });
-</script>
+
+    // ── Mobile menu ───────────────────────────────────────────────────
+    const mobBtn = document.getElementById('mob-btn');
+    const mmenu = document.getElementById('mmenu');
+    const mobOpen = document.getElementById('mob-open');
+    const mobClose = document.getElementById('mob-close');
+
+    function toggleMenu(open) {
+      mmenu.classList.toggle('open', open);
+      mobOpen.classList.toggle('hidden', open);
+      mobClose.classList.toggle('hidden', !open);
+      mobBtn.setAttribute('aria-expanded', String(open));
+    }
+    mobBtn.addEventListener('click', e => { e.stopPropagation(); toggleMenu(!mmenu.classList.contains('open')); });
+    mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+    document.addEventListener('click', e => { if (!mmenu.contains(e.target) && e.target !== mobBtn) toggleMenu(false); });
+
+    // ── Scroll effects ────────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    const btt = document.getElementById('btt');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      navbar.classList.toggle('nav-scrolled', y > 36);
+      btt.classList.toggle('show', y > 400);
+    }, { passive: true });
+
+    // ── Active nav links ──────────────────────────────────────────────
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+
+    sections.forEach(s =>
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting)
+            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        });
+      }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 }).observe(s)
+    );
+
+    // ── Reveal on scroll ──────────────────────────────────────────────
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revObs.unobserve(e.target); } });
+    }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+  </script>
+
 </body>
+
 </html>
