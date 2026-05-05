@@ -1,0 +1,24 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "type": "Assertion",
+  "id": "https://caturseptian.site/openbadges/data-engineer/assertion.json",
+  "recipient": {
+    "type": "email",
+    "hashed": true,
+    "salt": "d7feab9b801b6c160852173a5ccf538a",
+    "identity": "sha256$dc57350dfa98dd37046e00937d88d7d9912729b5a33cd84a3741893d7f03742f"
+  },
+  "badge": "https://caturseptian.site/openbadges/data-engineer/badge.json",
+  "issuedOn": "2026-02-22",
+  "expires": "2028-02-22",
+  "evidence": {
+    "id": "https://www.datacamp.com/certificate/DE0015292128567",
+    "type": "Evidence",
+    "name": "DataCamp Certified Data Engineer Certificate",
+    "description": "Official DataCamp certificate verifying completion of the Data Engineer certification program. Certificate ID: DE0015292128567."
+  },
+  "verification": {
+    "type": "HostedBadge"
+  },
+  "narrative": "Catur Septian successfully completed all requirements for the DataCamp Certified Data Engineer certification, including timed knowledge exams and a practical data engineering exam. Certificate ID: DE0015292128567."
+}

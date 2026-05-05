@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Badge Verification – DataCamp Certified Data Engineer</title>
+  <meta name="description" content="Open Badges 2.0 verification page for Catur Septian's DataCamp Certified Data Engineer credential." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .card {
+      width: 100%;
+      max-width: 640px;
+      background: #12112a;
+      border: 1px solid #2d2b5a;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, #1a1750 0%, #0d0b2e 60%, #0a1628 100%);
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, #4338ca33 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 32px #6366f166);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-verified {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #05966922; border: 1px solid #059669aa;
+      color: #34d399; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      margin-bottom: 1rem; position: relative; z-index: 1;
+    }
+    .hero-verified::before { content: '✓'; font-size: 0.7rem; }
+    .hero h1 {
+      font-size: 1.9rem; font-weight: 800; color: #fff;
+      position: relative; z-index: 1;
+      margin-top: 0.75rem;
+    }
+    .hero-sub { color: #a5b4fc; font-size: 0.9rem; margin-top: 0.3rem; position: relative; z-index: 1; }
+
+    /* Recipient bar */
+    .recipient-bar {
+      background: #1e1b4b;
+      border-bottom: 1px solid #312e81;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .recipient-name { font-weight: 700; font-size: 1rem; color: #e2e8f0; }
+    .recipient-label { font-size: 0.75rem; color: #6366f1; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 0.1rem; }
+
+    /* Details */
+    .details { padding: 1.5rem 2rem; }
+    .detail-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #1e293b;
+      gap: 1rem;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label {
+      font-size: 0.78rem; color: #6366f1; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      flex-shrink: 0; padding-top: 0.05rem;
+    }
+    .detail-value { font-size: 0.92rem; color: #e2e8f0; text-align: right; font-weight: 500; }
+    .detail-value a { color: #818cf8; text-decoration: none; word-break: break-all; }
+    .detail-value a:hover { text-decoration: underline; }
+    .cert-id { font-family: "SF Mono", "Fira Code", monospace; font-size: 0.82rem; color: #a5b4fc; }
+
+    /* Status chips */
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.7rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .chip-valid { background: #05966922; border: 1px solid #059669; color: #34d399; }
+    .chip-active { background: #1e40af22; border: 1px solid #3b82f6; color: #93c5fd; }
+
+    /* JSON links */
+    .json-links {
+      padding: 1.25rem 2rem;
+      background: #0a0918;
+      border-top: 1px solid #1e1b4b;
+    }
+    .json-links h3 {
+      font-size: 0.72rem; font-weight: 700; color: #475569;
+      text-transform: uppercase; letter-spacing: .1em; margin-bottom: 0.85rem;
+    }
+    .json-grid { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .json-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      background: #1e1b4b;
+      border: 1px solid #312e81;
+      color: #a5b4fc;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .json-btn:hover { background: #312e81; border-color: #6366f1; color: #e0e7ff; }
+    .json-btn::before { content: '{}'; font-size: 0.65rem; opacity: .7; }
+
+    /* Footer */
+    footer {
+      padding: 1rem 2rem;
+      border-top: 1px solid #1a1730;
+      font-size: 0.72rem; color: #475569;
+      text-align: center; line-height: 1.6;
+    }
+    footer a { color: #6366f1; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <div class="hero">
+    <div class="hero-verified">Open Badges 2.0</div>
+    <img src="images/data-engineer.png" alt="Data Engineer Badge" />
+    <h1>Data Engineer</h1>
+    <p class="hero-sub">DataCamp Professional Certification</p>
+  </div>
+
+  <div class="recipient-bar">
+    <div class="avatar">CS</div>
+    <div>
+      <div class="recipient-label">Awarded To</div>
+      <div class="recipient-name">Catur Septian</div>
+    </div>
+  </div>
+
+  <div class="details">
+
+    <div class="detail-row">
+      <span class="detail-label">Issuer</span>
+      <span class="detail-value">
+        <a href="https://www.datacamp.com" target="_blank" rel="noopener noreferrer">DataCamp</a>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Issued On</span>
+      <span class="detail-value">February 22, 2026</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Expires</span>
+      <span class="detail-value">
+        February 22, 2028&nbsp;
+        <span class="chip chip-active">Active</span>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Status</span>
+      <span class="detail-value">
+        <span class="chip chip-valid">&#10003; Valid</span>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Certificate ID</span>
+      <span class="detail-value cert-id">DE0015292128567</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Evidence</span>
+      <span class="detail-value">
+        <a href="https://www.datacamp.com/certificate/DE0015292128567" target="_blank" rel="noopener noreferrer">
+          View on DataCamp &rarr;
+        </a>
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <span class="detail-label">Criteria</span>
+      <span class="detail-value">
+        <a href="criteria.html">View earning criteria &rarr;</a>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="json-links">
+    <h3>Open Badge Metadata</h3>
+    <div class="json-grid">
+      <a class="json-btn" href="assertion.json" target="_blank">assertion.json</a>
+      <a class="json-btn" href="badge.json" target="_blank">badge.json</a>
+      <a class="json-btn" href="issuer.json" target="_blank">issuer.json</a>
+    </div>
+  </div>
+
+  <footer>
+    This is a self-hosted <a href="https://www.imsglobal.org/spec/ob/v2p0/" target="_blank" rel="noopener noreferrer">Open Badges 2.0</a>
+    representation of a DataCamp certificate.<br />
+    It is <strong>not</strong> an official Open Badge issued directly by DataCamp.<br />
+    Hosted by <a href="https://caturseptian.site" target="_blank" rel="noopener noreferrer">caturseptian.site</a>
+  </footer>
+
+</div>
+</body>
+</html>

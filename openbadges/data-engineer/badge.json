@@ -1,0 +1,21 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "type": "BadgeClass",
+  "id": "https://caturseptian.site/openbadges/data-engineer/badge.json",
+  "name": "Data Engineer",
+  "description": "The DataCamp Certified Data Engineer certification validates expertise in building, maintaining, and optimizing data infrastructure. Earners demonstrate proficiency in data management, Python/SQL programming for data engineering workflows, exploratory data analysis, and the ability to design scalable pipelines. Certification is awarded upon passing both timed theoretical exams and a practical submission exam.",
+  "image": "https://caturseptian.site/openbadges/data-engineer/images/data-engineer.png",
+  "criteria": {
+    "id": "https://caturseptian.site/openbadges/data-engineer/criteria.html",
+    "narrative": "Candidates must pass timed exams covering data management and programming for data engineering, as well as a practical exam demonstrating the ability to build real-world data pipelines."
+  },
+  "issuer": "https://caturseptian.site/openbadges/data-engineer/issuer.json",
+  "tags": [
+    "data engineering",
+    "SQL",
+    "Python",
+    "data pipelines",
+    "data management",
+    "certification"
+  ]
+}

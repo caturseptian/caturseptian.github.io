@@ -1,0 +1,10 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "type": "Issuer",
+  "id": "https://caturseptian.site/openbadges/data-engineer/issuer.json",
+  "name": "DataCamp",
+  "url": "https://www.datacamp.com",
+  "email": "support@datacamp.com",
+  "description": "DataCamp is an online learning platform focused on data science and analytics education, offering courses, skill tracks, and professional certifications.",
+  "image": "https://www.datacamp.com/favicon.ico"
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criteria – DataCamp Certified Data Engineer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      border-radius: 16px;
+      border: 1px solid #4338ca44;
+    }
+    header img { width: 100px; margin-bottom: 1rem; }
+    header h1 { font-size: 1.9rem; font-weight: 700; color: #fff; }
+    header p { color: #a5b4fc; margin-top: 0.4rem; font-size: 0.95rem; }
+    .badge-issuer { color: #6ee7b7; font-weight: 600; font-size: 0.85rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 0.5rem; }
+
+    h2 { font-size: 1.15rem; font-weight: 700; color: #c7d2fe; margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    h2 span { display: inline-block; width: 6px; height: 6px; background: #818cf8; border-radius: 50%; }
+
+    .criteria-grid { display: grid; gap: 1rem; }
+    .criterion {
+      background: #1e1b4b22;
+      border: 1px solid #312e8166;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      position: relative;
+    }
+    .criterion::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      font-size: 1.8rem; font-weight: 800;
+      color: #312e8155;
+    }
+    .criterion h3 { font-size: 1rem; font-weight: 700; color: #a5b4fc; margin-bottom: 0.5rem; }
+    .criterion p { font-size: 0.9rem; color: #94a3b8; line-height: 1.65; }
+
+    .exam-section {
+      margin-top: 2rem;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .exam-section h2 { margin-top: 0; }
+    .exam-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #1e293b;
+    }
+    .exam-row:last-child { border-bottom: none; }
+    .exam-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, #4338ca, #7c3aed);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .exam-row h4 { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; margin-bottom: 0.2rem; }
+    .exam-row p { font-size: 0.85rem; color: #94a3b8; }
+
+    .evidence-box {
+      margin-top: 2.5rem;
+      text-align: center;
+      padding: 1.75rem;
+      background: linear-gradient(135deg, #064e3b22, #065f4622);
+      border: 1px solid #059669aa;
+      border-radius: 12px;
+    }
+    .evidence-box p { color: #6ee7b7; margin-bottom: 1rem; font-size: 0.9rem; }
+    .evidence-box a {
+      display: inline-block;
+      background: #059669;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .evidence-box a:hover { background: #047857; }
+
+    .disclaimer {
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.6;
+      padding: 1rem;
+      border: 1px dashed #334155;
+      border-radius: 8px;
+    }
+
+    .back-link { display: block; text-align: center; margin-top: 2rem; }
+    .back-link a { color: #818cf8; font-size: 0.85rem; text-decoration: none; }
+    .back-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="images/data-engineer.png" alt="Data Engineer Badge" />
+    <div class="badge-issuer">DataCamp Certification</div>
+    <h1>Certified Data Engineer</h1>
+    <p>Earning criteria and competency requirements</p>
+  </header>
+
+  <h2><span></span>Core Competency Areas</h2>
+  <div class="criteria-grid">
+
+    <div class="criterion" data-num="01">
+      <h3>Data Management</h3>
+      <p>Demonstrates the ability to design, implement, and maintain data storage systems. Covers relational databases, data warehousing principles, data modeling, schema design, and data governance best practices including data quality and lineage.</p>
+    </div>
+
+    <div class="criterion" data-num="02">
+      <h3>Programming for Data Engineering</h3>
+      <p>Proficiency in Python and SQL for building robust data pipelines and ETL/ELT workflows. Includes writing efficient queries, data transformation logic, working with APIs, and using libraries such as pandas, SQLAlchemy, and related tooling.</p>
+    </div>
+
+    <div class="criterion" data-num="03">
+      <h3>Exploratory Data Analysis</h3>
+      <p>Ability to profile datasets, identify anomalies, understand distributions, and summarize data characteristics. Earners can apply statistical reasoning to validate data quality and communicate findings clearly to both technical and non-technical audiences.</p>
+    </div>
+
+    <div class="criterion" data-num="04">
+      <h3>Data Pipeline Architecture</h3>
+      <p>Understanding of batch and streaming pipeline patterns, orchestration tools, and infrastructure concerns including scalability, reliability, and monitoring. Ability to select appropriate tools and architectural patterns for a given data engineering problem.</p>
+    </div>
+
+  </div>
+
+  <div class="exam-section">
+    <h2><span></span>Assessment Structure</h2>
+
+    <div class="exam-row">
+      <div class="exam-icon">⏱</div>
+      <div>
+        <h4>Timed Exam 1 – Data Management</h4>
+        <p>Timed, closed-book theoretical exam assessing knowledge of data storage systems, modeling, governance, and quality principles.</p>
+      </div>
+    </div>
+
+    <div class="exam-row">
+      <div class="exam-icon">💻</div>
+      <div>
+        <h4>Timed Exam 2 – Programming for Data Engineering</h4>
+        <p>Timed coding assessment covering Python and SQL applied to data engineering tasks: pipeline construction, transformations, and querying.</p>
+      </div>
+    </div>
+
+    <div class="exam-row">
+      <div class="exam-icon">🏗</div>
+      <div>
+        <h4>Practical Exam – End-to-End Pipeline</h4>
+        <p>An open-ended, real-world submission exam requiring the candidate to design, build, and document a working data pipeline solution. Evaluated by DataCamp assessors on correctness, code quality, and communication.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="evidence-box">
+    <p>Verify the original certificate on the DataCamp platform</p>
+    <a href="https://www.datacamp.com/certificate/DE0015292128567" target="_blank" rel="noopener noreferrer">
+      View Official Certificate &rarr;
+    </a>
+  </div>
+
+  <div class="disclaimer">
+    This page is a self-hosted Open Badges 2.0 representation of a certificate originally issued by DataCamp.
+    It is not an official Open Badge issued directly by DataCamp. The credential is verifiable via the evidence link above.
+  </div>
+
+  <div class="back-link">
+    <a href="index.html">&larr; Back to Badge Verification</a>
+  </div>
+
+</div>
+</body>
+</html>
