@@ -131,8 +131,8 @@ body { background: var(--bg); }
   background: var(--primary-dim); color: var(--primary-dark); border: 2px solid var(--primary);
   box-shadow: 0 4px 0 var(--primary-dark);
 }
-.btn-outline:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--primary-dim); }
-.btn-outline:active { box-shadow: 0 1px 0 var(--primary-dim); }
+.btn-outline:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--primary-dark); }
+.btn-outline:active { box-shadow: 0 1px 0 var(--primary-dark); }
 
 /* ---- cards --------------------------------------------------------------------- */
 .card {
