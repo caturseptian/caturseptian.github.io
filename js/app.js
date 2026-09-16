@@ -31,14 +31,26 @@ window.addEventListener('scroll', () => {
 const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
 
+let currentSectionId = sections[0]?.id;
+
+// The last section can't reach the trigger band above once the page is
+// scrolled to its max, so force it active whenever we hit the bottom.
+// Both the observer and the scroll listener funnel through this so
+// whichever fires last still lands on the correct link.
+function applyActiveLink() {
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+  const activeId = atBottom ? sections[sections.length - 1].id : currentSectionId;
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + activeId));
+}
+
 sections.forEach(s =>
   new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting)
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-    });
+    entries.forEach(e => { if (e.isIntersecting) currentSectionId = e.target.id; });
+    applyActiveLink();
   }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 }).observe(s)
 );
+
+window.addEventListener('scroll', applyActiveLink, { passive: true });
 
 // ── Reveal on scroll ──────────────────────────────────────────────
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
