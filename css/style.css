@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Catur Septian — Portfolio
+   Colorful, playful "console/game world" visual system on top of Tailwind
+   (CDN) utilities. This file holds only what Tailwind can't express: design
+   tokens, decorative blobs/shapes, tactile buttons, cards, and the timeline
+   "journey" path.
+   ========================================================================== */
+
+:root {
+  /* 60% — base: warm cream */
+  --bg: #fffaf0;
+  --border: #e7e1f5;
+  --text: #291C64;
+  --text-muted: #5544A7;
+  --text-faint: #6454B6;
+
+  /* 30% — primary: bright sky/turquoise blue */
+  --primary: #1fb6e0;
+  --primary-dark: #0e93b8;
+  --primary-dim: #e3f7fc;
+
+  /* 10% — accent: sunny yellow (CTAs, highlights) */
+  --accent: #ffc93c;
+  --accent-dark: #f0a91e;
+  --accent-ink: #4a3300;
+
+  /* small decorative rainbow, used sparingly (shapes, tags, icons) */
+  --coral: #ff6f91;
+  --purple: #9b6bff;
+  --mint: #2fc7a1;
+  --lime: #8bc34a;
+
+  /* section "worlds" — real pastel backgrounds, not near-white tints */
+  --world-sky: #cdeefb;
+  --world-mint: #d3f3e6;
+  --world-peach: #ffedc7;
+  --world-lavender: #eae1ff;
+  --world-coral: #ffe1e9;
+
+  --shadow-card: 0 10px 24px -8px rgba(46, 42, 77, 0.18);
+  --shadow-card-hover: 0 16px 32px -10px rgba(46, 42, 77, 0.24);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { background: var(--bg); }
+::selection { background: var(--accent); color: var(--accent-ink); }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--primary-dim); border-radius: 999px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+.skip-link {
+  position: absolute; top: -3rem; left: .5rem; z-index: 100;
+  background: var(--primary); color: #fff;
+  padding: .6rem 1.1rem; border-radius: 999px;
+  font-weight: 700; font-size: .85rem;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: .5rem; }
+
+.world-mint { background: var(--world-mint); }
+.world-peach { background: var(--world-peach); }
+.world-lavender { background: var(--world-lavender); }
+.world-coral { background: var(--world-coral); }
+.world-sky { background: var(--world-sky); }
+
+/* ---- decorative shapes (hero + contact bookends) --------------------------- */
+.blob {
+  position: absolute; border-radius: 50%; filter: blur(2px);
+  opacity: .55; pointer-events: none;
+}
+.blob-1 { width: 140px; height: 140px; background: var(--coral); top: 10%; left: 4%; animation: float-a 7s ease-in-out infinite; }
+.blob-2 { width: 90px; height: 90px; background: var(--mint); bottom: 16%; left: 12%; animation: float-b 8s ease-in-out infinite; }
+.blob-3 { width: 170px; height: 170px; background: var(--primary-dim); top: 6%; right: 8%; filter: blur(4px); opacity: .8; animation: float-a 9s ease-in-out infinite; }
+.blob-4 { width: 70px; height: 70px; background: var(--accent); bottom: 10%; right: 16%; animation: float-b 6.5s ease-in-out infinite; }
+
+@keyframes float-a { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-16px) scale(1.05); } }
+@keyframes float-b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(14px); } }
+
+/* ---- HUD-free section label (eyebrow badge) -------------------------------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-weight: 700; font-size: .78rem; letter-spacing: .02em;
+  color: var(--primary-dark); background: var(--primary-dim);
+  padding: .3rem .85rem; border-radius: 999px; margin-bottom: .9rem;
+}
+.eyebrow.c-mint { color: #0d7a5c; background: #b9ecd7; }
+.eyebrow.c-peach { color: #935e00; background: #ffdf9e; }
+.eyebrow.c-lavender { color: #5b2fc7; background: #d7c6ff; }
+.eyebrow.c-coral { color: #c23a5c; background: #ffc4d3; }
+
+.heading-mint { color: #0d7a5c; }
+.heading-peach { color: #935e00; }
+.heading-lavender { color: #5b2fc7; }
+.heading-coral { color: #c23a5c; }
+.heading-sky { color: var(--primary-dark); }
+
+/* ---- nav -------------------------------------------------------------------- */
+#navbar { transition: background-color .3s ease, box-shadow .3s ease; }
+.nav-scrolled { background-color: rgba(227, 247, 252, .88); backdrop-filter: blur(14px); box-shadow: 0 2px 16px rgba(46, 42, 77, .1); }
+
+.nav-link {
+  position: relative; border-radius: 999px; padding: .5rem 1rem;
+  transition: background-color .18s ease, color .18s ease;
+}
+.nav-link:hover { background: var(--primary-dim); color: var(--primary-dark); }
+.nav-link.active { background: var(--primary); color: #fff; }
+
+#mmenu { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .25s ease; }
+#mmenu.open { max-height: 32rem; opacity: 1; }
+
+/* ---- reveal on scroll --------------------------------------------------------- */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.revealed { opacity: 1; transform: none; }
+.delay-1 { transition-delay: .05s; } .delay-2 { transition-delay: .1s; }
+.delay-3 { transition-delay: .15s; } .delay-4 { transition-delay: .2s; }
+.delay-5 { transition-delay: .25s; } .delay-6 { transition-delay: .3s; }
+.delay-7 { transition-delay: .35s; }
+
+/* ---- tactile chunky buttons --------------------------------------------------- */
+.btn { transition: transform .15s ease, box-shadow .15s ease; transform: translateY(0); }
+.btn:active { transform: translateY(2px) !important; }
+
+.btn-accent {
+  background: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 4px 0 var(--accent-dark);
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--accent-dark); }
+.btn-accent:active { box-shadow: 0 1px 0 var(--accent-dark); }
+
+.btn-outline {
+  background: var(--primary-dim); color: var(--primary-dark); border: 2px solid var(--primary);
+  box-shadow: 0 4px 0 var(--primary-dark);
+}
+.btn-outline:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--primary-dim); }
+.btn-outline:active { box-shadow: 0 1px 0 var(--primary-dim); }
+
+/* ---- cards --------------------------------------------------------------------- */
+.card {
+  background: var(--card-bg, #eaf8fd);
+  border: 3px solid var(--primary-dim);
+  box-shadow: var(--shadow-card);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
+
+/* cards pick up a tinted fill + border matching their section or icon color */
+#about .card { --card-bg: #e6f9ef; }
+#contact .card { --card-bg: #fff0f4; }
+
+.card:has(.icon-purple) { --card-bg: #f4ecff; border-color: #d9c6ff; }
+.card:has(.icon-accent) { --card-bg: #fff6df; border-color: #ffe29b; }
+.card:has(.icon-blue) { --card-bg: #e3f7fc; border-color: #a8e6f5; }
+.card:has(.icon-mint) { --card-bg: #e2f7ee; border-color: #a8e9d3; }
+.card:has(.icon-coral) { --card-bg: #ffe9ef; border-color: #ffc2d1; }
+.card:has(.icon-lime) { --card-bg: #f0f8e0; border-color: #d3ecab; }
+
+.project-card { position: relative; overflow: hidden; border-color: var(--cat-border, var(--primary-dim)); }
+.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--cat-color, var(--primary)); }
+.project-card[data-cat="fullstack"] { --cat-color: var(--primary); --cat-border: #9fe3f5; --card-bg: #eaf8fd; }
+.project-card[data-cat="automation"] { --cat-color: var(--purple); --cat-border: #d9c6ff; --card-bg: #f4ecff; }
+.project-card:hover { border-color: var(--cat-color, var(--primary)); }
+
+.tag-fullstack { background: var(--primary-dim); color: var(--primary-dark); }
+.tag-automation { background: #f1e9ff; color: #6d3fd6; }
+.tag-neutral { background: #e4d9fb; color: #6d3fd6; }
+
+/* ---- stack "ability" chips ------------------------------------------------------- */
+.chip { background: var(--chip-bg, #eaf8fd); transition: transform .15s ease, border-color .15s ease; }
+.chip:hover { transform: translateY(-3px); border-color: var(--primary); }
+#stack .chip { --chip-bg: #f2ebff; }
+
+.dash { width: 18px; height: 5px; border-radius: 999px; flex-shrink: 0; }
+.dash.c-blue { background: var(--primary); }
+.dash.c-coral { background: var(--coral); }
+.dash.c-purple { background: var(--purple); }
+.dash.c-mint { background: var(--mint); }
+.dash.c-lime { background: var(--lime); }
+.dash.c-accent { background: var(--accent-dark); }
+
+/* ---- journey timeline ------------------------------------------------------------- */
+.tl { position: relative; padding-left: 2.25rem; padding-bottom: 2rem; }
+.tl::before {
+  content: ''; position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--primary); border: 4px solid var(--primary-dim);
+}
+.tl:not(:last-child)::after {
+  content: ''; position: absolute; left: 10px; top: 26px; bottom: 0; width: 2px;
+  background-image: linear-gradient(var(--border) 60%, transparent 0%);
+  background-size: 2px 10px; background-repeat: repeat-y;
+}
+
+/* ---- achievement icon colors (reuse across cert cards) ----------------------------- */
+.icon-purple { background: #f1e9ff; color: #6d3fd6; }
+.icon-accent { background: #fff3d1; color: var(--accent-dark); }
+.icon-blue { background: var(--primary-dim); color: var(--primary-dark); }
+.icon-mint { background: #dcf6ee; color: #17916f; }
+.icon-coral { background: #ffe3ea; color: #d94569; }
+.icon-lime { background: #eef7d9; color: #5b8a1f; }
+
+/* ---- badge-criteria panel (HTMX fragment from openbadges/data-engineer) ------------- */
+.htmx-indicator { opacity: 0; transition: opacity .15s ease; }
+.htmx-request.htmx-indicator, .htmx-request .htmx-indicator { opacity: 1; }
+
+.criteria-grid { display: grid; gap: .65rem; margin-top: .85rem; }
+.criterion { position: relative; border: 2px solid var(--primary-dim); border-radius: 16px; padding: .8rem 2.5rem .8rem 1rem; background: var(--primary-dim); }
+.criterion::before {
+  content: attr(data-num); position: absolute; top: .7rem; right: .9rem;
+  font-size: 1.2rem; font-weight: 800; color: var(--primary); opacity: .3;
+}
+.criterion h3 { font-size: .85rem; font-weight: 700; margin-bottom: .25rem; color: var(--text); }
+.criterion p { font-size: .78rem; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+/* ---- contact pills ------------------------------------------------------------------ */
+.pill-link { transition: transform .18s ease, border-color .18s ease, color .18s ease; }
+.pill-link:hover { border-color: var(--primary); color: var(--primary-dark); transform: translateY(-3px); }
+
+#btt { transition: opacity .3s ease; }
+#btt.show { opacity: 1; pointer-events: auto; }
+
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.75); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
