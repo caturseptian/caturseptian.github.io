@@ -18,12 +18,12 @@ mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggl
 document.addEventListener('click', e => { if (!mmenu.contains(e.target) && e.target !== mobBtn) toggleMenu(false); });
 
 // ── Scroll effects ────────────────────────────────────────────────
-const navbar = document.getElementById('navbar');
+const siteHeader = document.getElementById('site-header');
 const btt = document.getElementById('btt');
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  navbar.classList.toggle('nav-scrolled', y > 36);
+  siteHeader.classList.toggle('nav-scrolled', y > 36);
   btt.classList.toggle('show', y > 400);
 }, { passive: true });
 

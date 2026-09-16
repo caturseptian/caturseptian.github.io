@@ -95,7 +95,7 @@ body { background: var(--bg); }
 .heading-sky { color: var(--primary-dark); }
 
 /* ---- nav -------------------------------------------------------------------- */
-#navbar { transition: background-color .3s ease, box-shadow .3s ease; }
+#site-header { transition: background-color .3s ease, box-shadow .3s ease; }
 .nav-scrolled { background-color: rgba(227, 247, 252, .88); backdrop-filter: blur(14px); box-shadow: 0 2px 16px rgba(46, 42, 77, .1); }
 
 .nav-link {
