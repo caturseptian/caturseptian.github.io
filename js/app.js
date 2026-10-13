@@ -20,6 +20,7 @@ document.addEventListener('click', e => { if (!mmenu.contains(e.target) && e.tar
 // ── Scroll effects ────────────────────────────────────────────────
 const siteHeader = document.getElementById('site-header');
 const btt = document.getElementById('btt');
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
