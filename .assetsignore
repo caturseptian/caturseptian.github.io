@@ -1,0 +1,15 @@
+# Not part of the published site (Cloudflare Workers mirror).
+.git
+.github
+.idea
+.rtk
+.wrangler
+.assetsignore
+wrangler.jsonc
+CLAUDE.md
+README.md
+LICENSE
+CNAME
+_config.yml
+photothumb.db
+index_v1.html

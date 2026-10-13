@@ -1,0 +1,11 @@
+// Mirror of caturseptian.site on Cloudflare Workers (static assets), served at
+// https://caturseptian-site.caturseptian-dev.workers.dev in case the custom
+// domain or GitHub Pages is unavailable. No build step: the repository root is
+// the site. Files that are not part of the site are listed in .assetsignore.
+{
+  "name": "caturseptian-site",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "."
+  }
+}
