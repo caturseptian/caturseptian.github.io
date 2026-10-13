@@ -13,3 +13,5 @@ CNAME
 _config.yml
 photothumb.db
 index_v1.html
+tailwind.config.js
+css/tailwind.src.css

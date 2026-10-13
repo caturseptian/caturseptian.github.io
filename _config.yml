@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 exclude:
   - wrangler.jsonc
+  - tailwind.config.js
