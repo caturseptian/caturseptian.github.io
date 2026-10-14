@@ -159,6 +159,8 @@ body { background: var(--bg); }
 .project-card[data-cat="fullstack"] { --cat-color: var(--primary); --cat-border: #9fe3f5; --card-bg: #eaf8fd; }
 .project-card[data-cat="automation"] { --cat-color: var(--purple); --cat-border: #d9c6ff; --card-bg: #f4ecff; }
 .project-card:hover { border-color: var(--cat-color, var(--primary)); }
+/* Kartu sisa sendirian di baris terakhir grid 3 kolom ditaruh di tengah. */
+@media (min-width: 1024px) { .project-card:last-child:nth-child(3n+1) { grid-column-start: 2; } }
 
 .tag-fullstack { background: var(--primary-dim); color: var(--primary-dark); }
 .tag-automation { background: #f1e9ff; color: #6d3fd6; }
